@@ -1,4 +1,5 @@
 import io, os
+from pathlib import Path
 import pandas as pd
 from fastapi import FastAPI, HTTPException, UploadFile, File
 from fastapi.staticfiles import StaticFiles
@@ -8,8 +9,9 @@ from .data import load_canonical, validate_upload
 from .engine import Engine, load_policy
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
-DATA = os.path.join(ROOT, "data", "SIH26170_BurnIn_Dataset_1000.xlsx")
-POLICY = os.path.join(ROOT, "config", "risk_policy.json")
+BACKEND_ROOT = Path(__file__).resolve().parents[1]
+DATA = str(BACKEND_ROOT / "data" / "SIH26170_BurnIn_Dataset_1000.xlsx")
+POLICY = str(BACKEND_ROOT / "config" / "risk_policy.json")
 
 app = FastAPI(title="NEXTPROBE-X", version="0.1")
 S = {"engine": None, "eval": None, "canon": None}

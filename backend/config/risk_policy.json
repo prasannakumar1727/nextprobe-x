@@ -1,0 +1,22 @@
+{
+  "policy_version": "risk-policy-0.1",
+  "policy_status": "simulation_only",
+  "disclaimer": "SIMULATION-ONLY prototype assumptions. Not industrial, ISRO or customer cost estimates.",
+  "false_negative_cost": 20.0,
+  "false_positive_cost": 1.0,
+  "probe_cost": 0.25,
+  "budgets": [10, 25, 50, 100, 150],
+  "sensitivity": {"fn_fp_ratios": [5, 10, 20, 50], "probe_costs": [0.10, 0.25, 0.50, 1.00], "budget": 50},
+  "gate": {
+    "calibration": "SIMULATION-ONLY CALIBRATION on validation split (150 devices)",
+    "target_release_escape_rate": 0.02,
+    "hold_probability": 0.5,
+    "max_rel_interval_width": 1.5,
+    "lot_contamination_caution": 0.15,
+    "lot_contamination_untrusted": 0.30,
+    "ood_sigma": 5.0,
+    "ood_mahalanobis_quantile": 0.995
+  },
+  "seed": 42,
+  "model_version": "nextprobe-bayes-mixture-0.1"
+}
